@@ -2,6 +2,10 @@ const main = document.getElementById("main");
 const notification = document.getElementById("notification");
 const movieListURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1";
 const IMAGE_PATH = "https://image.tmdb.org/t/p/w1280";
+const searchURL = "https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query=";
+const form = document.getElementById("form");
+const formInput = document.querySelector("form input");
+
 
 let movieListt = [];
 let isLoading = false;
@@ -44,6 +48,15 @@ function updateDOM(isLoading, movieListt, error) {
     }
     // console.log(movieList);
     notification.innerText = "";
+    emptyNode(main);
+    if (movieListt.length === 0) {
+        console.log("From movieListt length====0");
+        notification.innerText = "No results";
+        console.log("From movieListt length====0");
+        return;
+    }
+
+
     movieListt.forEach((movie, index) => {
         const { vote_average, original_title, overview, poster_path } = movie;
 
@@ -66,8 +79,31 @@ function updateDOM(isLoading, movieListt, error) {
 }
 
 function getRatingClass(vote_average) {
-    const res = parseInt(vote_average) >= 8 ? "rating__color__green" : parseInt(vote_average) >= 3 ? "rating__color__orange" :"rating__color__red";
+    const res = parseInt(vote_average) >= 8 ? "rating__color__green" : parseInt(vote_average) >= 3 ? "rating__color__orange" : "rating__color__red";
     // console.log("essgff", res);
     return res;
 
+}
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (formInput.value !== "") {
+        fetchMovieList(searchURL + formInput.value).then((movieList) => {
+            isLoading = false;
+            movieListt = movieList;
+            console.log("inside search fetchMovieList", movieListt);
+            updateDOM(isLoading, movieListt, error);
+        })
+            .catch((error) => {
+                isLoading = false;
+                updateDOM(isLoading, movieListt, error);
+            })
+    }
+})
+
+function emptyNode(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
