@@ -1,12 +1,109 @@
-*{
-     padding: 0;
-     margin: 0;
-     box-sizing: border-box;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 
-html{
+html {
     font-size: 62.5%;
 }
 
 
+header {
+    background-color: grey;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+form input {
+    border: 2px solid black;
+    background-color: grey;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+
+}
+
+
+form input::placeholder {
+    color: white;
+}
+
+form input:focus {
+    outline: none;
+}
+
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    padding: 5px;
+}
+
+main .movie {
+    position: relative;
+    width: 300px;
+    border-radius: 5px;
+    /* padding: 3px; */
+    border: 2px solid black;
+    overflow: hidden;
+    cursor: pointer;
+
+}
+
+.movie img {
+    width: 100%;
+}
+
+
+.movie__info {
+    display: flex;
+    color: white;
+    background-color: rgb(80, 78, 78);
+    position: relative;
+    padding: 5px;
+}
+
+.movie__info span {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background-color: aliceblue;
+    color: black;
+    padding: 3px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+.movie__overview {
+    background-color: white;
+    position: absolute;
+    /* border: 2px solid red; */
+    overflow: hidden;
+    /* transform: translateY(-150%); */
+    max-height: 100%;
+    overflow-y: auto;
+    bottom: 0;
+    left: 0;
+
+    transform: translateY(101%);
+    transition: transform 1s ease;
+    font-size: 1.3rem;
+    padding: 5px;
+
+}
+
+.movie__overview h1{
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+
+.movie:hover  .movie__overview{
+    /* cursor: pointer; */
+    transform: translateY(0%);
+}
