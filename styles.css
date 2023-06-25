@@ -40,18 +40,21 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* justify-content: space-around; */
+    justify-content: space-around;
     padding: 5px;
+    row-gap: 10px;
 }
 
 main .movie {
+    box-sizing: border-box;
     position: relative;
     width: 300px;
     border-radius: 5px;
     /* padding: 3px; */
-    border: 2px solid black;
+    border: 1px solid black;
     overflow: hidden;
     cursor: pointer;
+    /* margin-bottom: 2px; */
 
 }
 
@@ -86,24 +89,29 @@ main .movie {
     overflow: hidden;
     /* transform: translateY(-150%); */
     max-height: 100%;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     bottom: 0;
     left: 0;
 
-    transform: translateY(101%);
+    transform: translateY(100%);
     transition: transform 1s ease;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     padding: 5px;
 
 }
 
-.movie__overview h1{
+.movie__overview h1 {
     font-size: 2rem;
     margin-bottom: 3rem;
 }
 
 
-.movie:hover  .movie__overview{
+.movie:hover .movie__overview {
     /* cursor: pointer; */
     transform: translateY(0%);
+}
+
+.notification {
+    font-size: 3rem;
+    font-weight: 700;
 }
