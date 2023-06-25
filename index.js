@@ -45,24 +45,29 @@ function updateDOM(isLoading, movieListt, error) {
     // console.log(movieList);
     notification.innerText = "";
     movieListt.forEach((movie, index) => {
-        const { original_title, overview, poster_path } = movie;
+        const { vote_average, original_title, overview, poster_path } = movie;
+
         const movieElement = document.createElement("div");
         movieElement.classList.add("movie");
-        movieElement.innerHTML = `<div class="movie">
-        <img src="${IMAGE_PATH + poster_path}"
-        alt="">
+        movieElement.innerHTML = `<img src="${IMAGE_PATH + poster_path}" alt="">
     <div class="movie__info">
         <h2>${original_title}</h2>
-        <span class="green">9.8</span>
+        <span class="${getRatingClass(vote_average)}">${vote_average}</span>
     </div>
     <div class="movie__overview">
         <h3>Overview</h3>
         ${overview}
       
-    </div>
-</div>`;
+    </div>`;
         main.appendChild(movieElement);
     })
 
+
+}
+
+function getRatingClass(vote_average) {
+    const res = parseInt(vote_average) >= 8 ? "rating__color__green" : parseInt(vote_average) >= 3 ? "rating__color__orange" :"rating__color__red";
+    // console.log("essgff", res);
+    return res;
 
 }

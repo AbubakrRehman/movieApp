@@ -68,10 +68,11 @@ main .movie {
     color: white;
     background-color: rgb(80, 78, 78);
     position: relative;
-    padding: 5px;
+    padding: 6px;
 }
 
 .movie__info span {
+    display: inline-block;
     position: absolute;
     top: 8px;
     right: 10px;
@@ -114,4 +115,19 @@ main .movie {
 .notification {
     font-size: 3rem;
     font-weight: 700;
+}
+
+.movie__info .rating__color__orange {
+    color: white;
+    background-color: rgb(184, 123, 10);
+}
+
+.movie__info .rating__color__green {
+    color: white;
+    background-color: rgb(21, 172, 21);
+}
+
+.movie__info .rating__color__red {
+    color: white;
+    background-color: rgb(165, 36, 60);
 }
