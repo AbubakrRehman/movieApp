@@ -39,7 +39,7 @@ function updateDOM(isLoading, movieListt, error) {
     }
 
     if (isLoading) {
-        notification.innerText = "...Loading!!!!!";
+        notification.innerText = "...Loading";
         return;
     }
     // console.log(movieList);

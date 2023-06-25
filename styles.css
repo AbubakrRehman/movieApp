@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -7,6 +9,7 @@
 
 html {
     font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -68,7 +71,7 @@ main .movie {
     color: white;
     background-color: rgb(80, 78, 78);
     position: relative;
-    padding: 6px;
+    padding: 8px;
 }
 
 .movie__info span {
