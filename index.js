@@ -62,7 +62,8 @@ function updateDOM(isLoading, movieListt, error) {
 
         const movieElement = document.createElement("div");
         movieElement.classList.add("movie");
-        movieElement.innerHTML = `<img width="300" height="500" loading="lazy" src="${IMAGE_PATH + poster_path}" alt="">
+        const alt = `alt=movie-${index}`;
+        movieElement.innerHTML = `<img src="${IMAGE_PATH + poster_path}" ${alt} width="300" height="450" style="object-fit:cover">
     <div class="movie__info">
         <h2>${original_title}</h2>
         <span class="${getRatingClass(vote_average)}">${vote_average}</span>
